@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormPasien">
+
+    <RelativeLayout
+        android:id="@+id/rellay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/imgUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="9dp"
+                android:adjustViewBounds="true"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_pasienicon" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.github.florent37.materialtextfield.MaterialTextField
+        android:id="@+id/tf_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mtf_labelColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/rellay1"
+        app:layout_constraintStart_toStartOf="@id/rellay1"
+        app:mtf_image="@drawable/ic_pasienicon">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama"
+            android:textColor="#333"
+            android:textSize="15sp" />
+
+    </com.github.florent37.materialtextfield.MaterialTextField>
+    <com.github.florent37.materialtextfield.MaterialTextField
+        android:id="@+id/tf_jk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mtf_labelColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/tf_nama"
+        app:layout_constraintStart_toStartOf="@id/tf_nama"
+        app:mtf_image="@drawable/ic_pasienicon">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jenis Kelamin"
+            android:textColor="#333"
+            android:textSize="15sp" />
+
+    </com.github.florent37.materialtextfield.MaterialTextField>
+    <com.github.florent37.materialtextfield.MaterialTextField
+        android:id="@+id/tf_umur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mtf_labelColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/tf_jk"
+        app:layout_constraintStart_toStartOf="@id/tf_jk"
+        app:mtf_image="@drawable/ic_person">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Umur"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+    </com.github.florent37.materialtextfield.MaterialTextField>
+
+    <Button
+        android:layout_marginTop="25dp"
+        android:background="@color/biru_tua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tf_umur"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Simpan"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

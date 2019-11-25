@@ -4,7 +4,7 @@
     <item
     android:id="@+id/pasien_menu"
     android:title="@string/pasien"
-    android:icon="@drawable/ic_pasien"/>
+    android:icon="@drawable/ic_pasien_icon"/>
 
     <item
         android:id="@+id/history_menu"

@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.progmob.medcheck.Model.Pasien;
+
+import java.util.ArrayList;
 
 public class PasienActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -19,6 +22,16 @@ public class PasienActivity extends AppCompatActivity implements BottomNavigatio
         loadFragment(new PasienFragment());
         BottomNavigationView bottomNavigationView = findViewById(R.id.bn_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
+        getSupportActionBar().setTitle("List Pasien");
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
@@ -44,4 +57,5 @@ public class PasienActivity extends AppCompatActivity implements BottomNavigatio
         }
         return false;
     }
+
 }

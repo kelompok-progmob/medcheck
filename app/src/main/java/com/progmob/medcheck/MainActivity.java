@@ -16,12 +16,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageView ivPasien = findViewById(R.id.iv_pasien);
+        ImageView ivListobat = findViewById(R.id.iv_listobat);
 
         ivPasien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, PasienActivity.class);
                         startActivity(intent);
+            }
+        });
+
+        ivListobat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListObatActivity.class);
+                startActivity(intent);
             }
         });
 
