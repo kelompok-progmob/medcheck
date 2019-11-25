@@ -12,6 +12,7 @@
         <activity android:name=".FormPasien"></activity>
         <activity android:name=".ListObatActivity" />
         <activity android:name=".PasienActivity" />
+        <activity android:name=".HistoryActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
