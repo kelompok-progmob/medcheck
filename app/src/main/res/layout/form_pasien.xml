@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E9E7DD"
     tools:context=".FormPasien">
 
     <RelativeLayout
@@ -33,65 +34,73 @@
 
     </RelativeLayout>
 
-    <com.github.florent37.materialtextfield.MaterialTextField
-        android:id="@+id/tf_nama"
+    <EditText
+        android:id="@+id/et_nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mtf_labelColor="#000"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/rellay1"
         app:layout_constraintStart_toStartOf="@id/rellay1"
-        app:mtf_image="@drawable/ic_pasienicon">
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="16dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:padding="16dp"
+        android:textSize="14sp"
+        android:hint="Nama"
+        android:textColor="@color/hitam"
+        android:fontFamily="@font/nunito_sans_reguler"
+        android:background="@drawable/bg_field"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nama"
-            android:textColor="#333"
-            android:textSize="15sp" />
-
-    </com.github.florent37.materialtextfield.MaterialTextField>
-    <com.github.florent37.materialtextfield.MaterialTextField
-        android:id="@+id/tf_jk"
+    <EditText
+        android:id="@+id/et_jk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mtf_labelColor="#000"
-        app:layout_constraintTop_toBottomOf="@id/tf_nama"
-        app:layout_constraintStart_toStartOf="@id/tf_nama"
-        app:mtf_image="@drawable/ic_pasienicon">
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/et_nama"
+        app:layout_constraintStart_toStartOf="@id/et_nama"
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="16dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:padding="16dp"
+        android:textSize="14sp"
+        android:hint="Jenis Kelamin"
+        android:textColor="@color/hitam"
+        android:fontFamily="@font/nunito_sans_reguler"
+        android:background="@drawable/bg_field"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Jenis Kelamin"
-            android:textColor="#333"
-            android:textSize="15sp" />
-
-    </com.github.florent37.materialtextfield.MaterialTextField>
-    <com.github.florent37.materialtextfield.MaterialTextField
-        android:id="@+id/tf_umur"
+    <EditText
+        android:id="@+id/et_umur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mtf_labelColor="#000"
-        app:layout_constraintTop_toBottomOf="@id/tf_jk"
-        app:layout_constraintStart_toStartOf="@id/tf_jk"
-        app:mtf_image="@drawable/ic_person">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Umur"
-            android:textColor="#333333"
-            android:textSize="15sp" />
-
-    </com.github.florent37.materialtextfield.MaterialTextField>
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/et_jk"
+        app:layout_constraintStart_toStartOf="@id/et_jk"
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="16dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:padding="16dp"
+        android:textSize="14sp"
+        android:inputType="numberDecimal"
+        android:hint="Umur"
+        android:textColor="@color/hitam"
+        android:fontFamily="@font/nunito_sans_reguler"
+        android:background="@drawable/bg_field"/>
 
     <Button
         android:layout_marginTop="25dp"
-        android:background="@color/biru_tua"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tf_umur"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:textSize="14sp"
+        android:background="@drawable/bg_btn"
+        app:layout_constraintTop_toBottomOf="@id/et_umur"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/cardview_light_background"
         android:text="Simpan"/>
 
 
