@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/pasien"
+        android:color="@android:color/holo_orange_light"
+        android:state_checked="true"/>
+    <item
+        android:title="@string/history"
+        android:color="@color/cardview_light_background"/>
+
+</selector>

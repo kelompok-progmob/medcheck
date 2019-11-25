@@ -33,5 +33,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     implementation 'com.github.florent37:materialtextfield:1.0.7'
+    implementation 'com.github.florent37:expansionpanel:1.2.2'
+
 
 }
