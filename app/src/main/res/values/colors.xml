@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="putih">#ffffff</color>
+    <color name="hitam">#000000</color>
     <color name="abu">#f1f1f1</color>
+    <color name="biru_tua">#006a88</color>
 </resources>
