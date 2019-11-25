@@ -36,14 +36,14 @@ public class HistoryFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        button= view.findViewById(R.id.history_detail_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), DetailHistory.class);
-                startActivity(intent);
-            }
-        });
+//        button= view.findViewById(R.id.history_detail_button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), DetailHistory.class);
+//                startActivity(intent);
+//            }
+//        });
         return view;
     }
 

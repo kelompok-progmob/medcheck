@@ -25,7 +25,7 @@ public class PasienActivity extends AppCompatActivity implements BottomNavigatio
 
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
-        getSupportActionBar().setTitle("List Pasien");
+        getSupportActionBar().setTitle("Pasien");
     }
 
     @Override

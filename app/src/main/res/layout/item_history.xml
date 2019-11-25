@@ -15,9 +15,9 @@
         app:expansion_toggleOnClick="true">
 
         <RelativeLayout
-            android:background="@android:color/white"
-            android:layout_height="48dp"
             android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:color/white"
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
@@ -27,30 +27,30 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="Nama Pasien"
-                android:textStyle="bold"
-                android:textColor="#3E3E3E" />
+                android:textColor="#3E3E3E"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_history_created"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="120dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginRight="85dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginBottom="16dp"
                 android:layout_toStartOf="@+id/headerIndicator"
                 android:layout_toLeftOf="@+id/headerIndicator"
                 android:text="31-11-2019"
                 android:textColor="#AAA" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:adjustViewBounds="true"
                 android:id="@+id/headerIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_width="wrap_content"
+                android:adjustViewBounds="true"
                 app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
 
         </RelativeLayout>
