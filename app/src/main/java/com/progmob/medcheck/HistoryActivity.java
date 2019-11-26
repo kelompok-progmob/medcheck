@@ -12,20 +12,20 @@ import com.progmob.medcheck.Model.Pasien;
 
 import java.util.ArrayList;
 
-public class PasienActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class HistoryActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pasien);
+        setContentView(R.layout.activity_history);
 
-        loadFragment(new PasienFragment());
+        loadFragment(new HistoryFragment());
         BottomNavigationView bottomNavigationView = findViewById(R.id.bn_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
-        getSupportActionBar().setTitle("Pasien");
+        getSupportActionBar().setTitle("History");
     }
 
     @Override

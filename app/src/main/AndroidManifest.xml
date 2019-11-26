@@ -9,12 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateObatActivity"></activity>
-        <activity android:name=".FormPasien" />
+        <activity android:name=".FormPasien"></activity>
         <activity android:name=".ListObatActivity" />
         <activity android:name=".PasienActivity" />
-        <activity android:name=".MainActivity"
-            android:theme="@style/NoAction">
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
