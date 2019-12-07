@@ -15,7 +15,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="213dp"
-            android:background="@drawable/blue_bg">
+            android:background="@drawable/ic_logreg">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
                     android:layout_width="77dp"
                     android:layout_height="77dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/logo" />
+                    android:src="@drawable/ic_logo_white" />
 
                 <com.progmob.medcheck.customfonts.MyTextView_Poppins_Medium
                     android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:maxLines="1"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@android:color/transparent"
                 android:layout_width="match_parent"
@@ -71,9 +71,9 @@
             <!-- ICON -->
             <ImageView
                 android:id="@+id/username_icon"
-                android:src="@drawable/email"
-                android:layout_width="14.7dp"
-                android:layout_height="10.3dp"
+                android:src="@drawable/ic_person"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginLeft="17dp"
                 android:layout_centerVertical="true"
                 />
@@ -110,8 +110,8 @@
             <ImageView
                 android:id="@+id/icon"
                 android:src="@drawable/password"
-                android:layout_width="14.7dp"
-                android:layout_height="10.3dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_marginLeft="17dp"
                 android:layout_centerVertical="true"
                 />
@@ -184,6 +184,33 @@
             android:text="Register"
             android:background="@drawable/blue_fill__rounded_color"
             />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="Sudah Punya Akun?"
+                android:textColor="@color/primaryTextColor"/>
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Klik Untuk Login"
+                android:layout_marginRight="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryTextColor"/>
+
+        </RelativeLayout>
 
 
     </LinearLayout>

@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="I Made Kadek Ketut"
-                android:textColor="@color/biru_tua"
+                android:textColor="@color/primaryTextColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

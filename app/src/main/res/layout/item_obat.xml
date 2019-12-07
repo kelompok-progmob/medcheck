@@ -44,7 +44,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@color/biru_tua" />
+                app:srcCompat="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -53,7 +53,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:text="99"
-                android:textColor="@color/biru_tua"
+                android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/imageView9"
@@ -69,7 +69,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imageView9"
                 app:layout_constraintEnd_toStartOf="@+id/imageView11"
                 app:layout_constraintTop_toTopOf="@+id/imageView9"
-                app:srcCompat="@drawable/ic_edit_white" />
+                app:srcCompat="@drawable/ic_edit_white"
+                tools:ignore="VectorDrawableCompat" />
 
             <ImageView
                 android:id="@+id/imageView11"
@@ -80,7 +81,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imageView9"
-                app:srcCompat="@drawable/ic_delete_white" />
+                app:srcCompat="@drawable/ic_delete_white"
+                tools:ignore="VectorDrawableCompat" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
