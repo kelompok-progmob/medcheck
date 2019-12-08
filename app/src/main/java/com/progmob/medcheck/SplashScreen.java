@@ -3,8 +3,11 @@ package com.progmob.medcheck;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.progmob.medcheck.utils.Constants;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -17,7 +20,17 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.SP_NAME, 0);
+                if(pref.contains("id_dokter")){
+                    Intent intent = new Intent(SplashScreen.this,MainActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(SplashScreen.this,LoginActivity.class);
+                    startActivity(intent);
+                }
+
                 finish();
             }
         }, 1500L);
