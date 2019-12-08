@@ -61,6 +61,8 @@ dependencies {
 
     //Data Binding Validator
     implementation 'com.github.Ilhasoft:data-binding-validator:2.0.0'
+    implementation 'androidx.room:room-runtime:2.2.2'
+    annotationProcessor 'androidx.room:room-compiler:2.2.2'
 
 
 }

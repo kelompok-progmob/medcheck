@@ -1,50 +1,82 @@
 package com.progmob.medcheck.Model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 
+
+@Entity(tableName = "tb_pasien")
 public class Pasien {
 
-    private String nama;
-    private String jk;
-    private String umur;
-    private String created_at;
+    @PrimaryKey(autoGenerate = true)
 
-    public Pasien(String nama, String jk, String umur, String created_at) {
-        this.nama = nama;
-        this.jk = jk;
-        this.umur = umur;
-        this.created_at = created_at;
+    @ColumnInfo(name="id_pasien")
+    public int pasienId;
+    @ColumnInfo(name="nama_pasien")
+    public String namaPasien;
+    @ColumnInfo(name="jenis_kelamin")
+    public String gender;
+    @ColumnInfo(name="tanggal_lahir")
+    public String tglLahir;
+    @ColumnInfo(name="created_at")
+    public String createdAt;
+
+    @Ignore
+    public Pasien(String namaPasien, String gender, String tglLahir, String createdAt) {
+        this.namaPasien = namaPasien;
+        this.gender = gender;
+        this.tglLahir = tglLahir;
+        this.createdAt = createdAt;
     }
 
-    public String getNama() {
-        return nama;
+    public Pasien(int pasienId, String namaPasien, String gender, String tglLahir, String createdAt) {
+        this.pasienId = pasienId;
+        this.namaPasien = namaPasien;
+        this.gender = gender;
+        this.tglLahir = tglLahir;
+        this.createdAt = createdAt;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public int getPasienId() {
+        return pasienId;
     }
 
-    public String getJk() {
-        return jk;
+    public void setPasienId(int pasienId) {
+        this.pasienId = pasienId;
     }
 
-    public void setJk(String jk) {
-        this.jk = jk;
+    public String getNamaPasien() {
+        return namaPasien;
     }
 
-    public String getUmur() {
-        return umur;
+    public void setNamaPasien(String namaPasien) {
+        this.namaPasien = namaPasien;
     }
 
-    public void setUmur(String umur) {
-        this.umur = umur;
+    public String getGender() {
+        return gender;
     }
 
-    public String getCreated_at() {
-        return created_at;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public String getTglLahir() {
+        return tglLahir;
+    }
+
+    public void setTglLahir(String tglLahir) {
+        this.tglLahir = tglLahir;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }

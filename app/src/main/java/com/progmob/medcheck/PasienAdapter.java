@@ -30,10 +30,10 @@ public class PasienAdapter extends RecyclerView.Adapter<PasienAdapter.PasienView
 
     @Override
     public void onBindViewHolder(PasienViewHolder holder, int position) {
-        holder.tvNama.setText(dataList.get(position).getNama());
-        holder.tvJk.setText(dataList.get(position).getJk());
-        holder.tvUmur.setText(dataList.get(position).getUmur());
-        holder.tvCreated.setText(dataList.get(position).getCreated_at());
+        holder.tvNama.setText(dataList.get(position).getNamaPasien());
+        holder.tvJk.setText(dataList.get(position).getGender());
+        holder.tvUmur.setText(dataList.get(position).getTglLahir());
+        holder.tvCreated.setText(dataList.get(position).getCreatedAt());
     }
 
     @Override

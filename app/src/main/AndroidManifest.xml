@@ -21,9 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormPasien" />
+        <activity android:name=".FormPasien" android:theme="@style/AppTheme"/>
         <activity android:name=".ListObatActivity" />
-        <activity android:name=".PasienActivity" />
+        <activity android:name=".PasienActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".HistoryActivity" />
         <activity android:name=".MainActivity" />
     </application>
