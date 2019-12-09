@@ -2,6 +2,7 @@ package com.progmob.medcheck.Model;
 
 import java.util.Date;
 
+
 public class History {
 
     private String nama;
@@ -14,28 +15,27 @@ public class History {
         this.created_at = created_at;
     }
 
-    public String getHistoryNama() {
+    public String getNama() {
         return nama;
     }
 
-    public void setHistoryNama(String nama) {
+    public void setNama(String nama) {
         this.nama = nama;
     }
 
-
-    public String getHistoryKeluhan() {
+    public String getKeluhan() {
         return keluhan;
     }
 
-    public void setHistoryKeluhan(String keluhan) {
-        this.keluhan= keluhan;
+    public void setKeluhan(String keluhan) {
+        this.keluhan = keluhan;
     }
 
-    public String getHistoryCreated_at() {
+    public String getCreated_at() {
         return created_at;
     }
 
-    public void setHistoryCreated_at(String created_at) {
+    public void setCreated_at(String created_at) {
         this.created_at = created_at;
     }
 }

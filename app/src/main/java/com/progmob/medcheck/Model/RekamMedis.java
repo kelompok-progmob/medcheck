@@ -20,14 +20,41 @@ public class RekamMedis {
     public int pasienId;
     @ColumnInfo(name="keluhan")
     public String keluhan;
+    @ColumnInfo(name="tekanan_darah")
+    public String tekananDarah;
+    @ColumnInfo(name="suhu_badan")
+    public int suhuBadan;
+    @ColumnInfo(name="berat_badan")
+    public int beratBadan;
+    @ColumnInfo(name="tinggi_badan")
+    public int tinggiBadan;
+    @ColumnInfo(name="diagnosa_penyakit")
+    public String diagnosaPenyakit;
 
     //lanjutin sendiri ya
 
     @Ignore
-    public RekamMedis(int dokterid, int pasienid, String keluhan) {
-        this.dokterId = dokterid;
-        this.pasienId = pasienid;
+    public RekamMedis(int dokterId, int pasienId, String keluhan, String tekananDarah, int suhuBadan, int beratBadan, int tinggiBadan, String diagnosaPenyakit) {
+        this.dokterId = dokterId;
+        this.pasienId = pasienId;
         this.keluhan = keluhan;
+        this.tekananDarah = tekananDarah;
+        this.suhuBadan = suhuBadan;
+        this.beratBadan = beratBadan;
+        this.tinggiBadan = tinggiBadan;
+        this.diagnosaPenyakit = diagnosaPenyakit;
+    }
+
+    public RekamMedis(int rekamId, int dokterId, int pasienId, String keluhan, String tekananDarah, int suhuBadan, int beratBadan, int tinggiBadan, String diagnosaPenyakit) {
+        this.rekamId = rekamId;
+        this.dokterId = dokterId;
+        this.pasienId = pasienId;
+        this.keluhan = keluhan;
+        this.tekananDarah = tekananDarah;
+        this.suhuBadan = suhuBadan;
+        this.beratBadan = beratBadan;
+        this.tinggiBadan = tinggiBadan;
+        this.diagnosaPenyakit = diagnosaPenyakit;
     }
 
     public int getRekamId() {
@@ -60,5 +87,45 @@ public class RekamMedis {
 
     public void setKeluhan(String keluhan) {
         this.keluhan = keluhan;
+    }
+
+    public String getTekananDarah() {
+        return tekananDarah;
+    }
+
+    public void setTekananDarah(String tekananDarah) {
+        this.tekananDarah = tekananDarah;
+    }
+
+    public int getSuhuBadan() {
+        return suhuBadan;
+    }
+
+    public void setSuhuBadan(int suhuBadan) {
+        this.suhuBadan = suhuBadan;
+    }
+
+    public int getBeratBadan() {
+        return beratBadan;
+    }
+
+    public void setBeratBadan(int beratBadan) {
+        this.beratBadan = beratBadan;
+    }
+
+    public int getTinggiBadan() {
+        return tinggiBadan;
+    }
+
+    public void setTinggiBadan(int tinggiBadan) {
+        this.tinggiBadan = tinggiBadan;
+    }
+
+    public String getDiagnosaPenyakit() {
+        return diagnosaPenyakit;
+    }
+
+    public void setDiagnosaPenyakit(String diagnosaPenyakit) {
+        this.diagnosaPenyakit = diagnosaPenyakit;
     }
 }

@@ -28,9 +28,9 @@ private ArrayList<History> dataListHistory;
 
     @Override
     public void onBindViewHolder(HistoryViewHolder holder, int position) {
-            holder.tvNama.setText(dataListHistory.get(position).getHistoryNama());
-            holder.tvKeluhan.setText(dataListHistory.get(position).getHistoryKeluhan());
-            holder.tvCreated.setText(dataListHistory.get(position).getHistoryCreated_at());
+            holder.tvNama.setText(dataListHistory.get(position).getNama());
+            holder.tvKeluhan.setText(dataListHistory.get(position).getKeluhan());
+            holder.tvCreated.setText(dataListHistory.get(position).getCreated_at());
             }
 
     @Override

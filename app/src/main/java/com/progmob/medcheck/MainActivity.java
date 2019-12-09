@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mDb = AppDatabase.getInstance(getApplicationContext());
 
-
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         "Ibuprofen",
                         20
                 );
-                mDb.obatDao().insertObat(data);
+                mDb.obatDao().insertObat(data1);
 
                 final Obat data3 = new Obat(
                         "Methylprednisolone",
