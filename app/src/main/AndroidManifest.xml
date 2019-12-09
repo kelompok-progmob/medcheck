@@ -31,6 +31,8 @@
         <activity android:name=".PasienActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".HistoryActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".HistoryDetailActivity" />
+        <activity android:name=".ViewResepHistory" />
     </application>
 
 </manifest>

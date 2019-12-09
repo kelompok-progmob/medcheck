@@ -4,7 +4,6 @@ import java.util.Date;
 
 
 public class History {
-
     private String nama;
     private String keluhan;
     private String created_at;
