@@ -64,5 +64,6 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.2.2'
     annotationProcessor 'androidx.room:room-compiler:2.2.2'
 
-
+    //MultiSelectDialog
+    implementation 'com.github.abumoallim:Android-Multi-Select-Dialog:v1.9'
 }

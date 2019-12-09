@@ -1,6 +1,7 @@
 package com.progmob.medcheck;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private void setComponents(){
         ImageView ivPasien = findViewById(R.id.iv_pasien);
         ImageView ivListobat = findViewById(R.id.iv_listobat);
+        CardView rekamMedis = findViewById(R.id.rekam_medis);
 
         ivPasien.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ListObatActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        rekamMedis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RekamMedisActivity.class);
                 startActivity(intent);
             }
         });

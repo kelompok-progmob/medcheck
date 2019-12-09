@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
     android:orientation="vertical"
     style="@style/loginParent">
     <ScrollView
@@ -79,7 +82,7 @@
                                 android:minHeight="50dp"
                                 android:text="Pasien mengalami gejala tifus disertai dengan penyakit maag akut"
                                 android:maxLines="3"
-                                android:hint="Keluhan"/>
+                                android:hint="Diagnosa"/>
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -197,4 +200,4 @@
 
 </RelativeLayout>
 
-
+</layout>
