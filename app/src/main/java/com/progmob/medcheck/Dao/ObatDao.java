@@ -27,5 +27,5 @@ public interface ObatDao {
     void deleteObat(Obat obat);
 
     @Query("SELECT * FROM tb_obat WHERE id_obat = :id_obat")
-    Pasien loadObatById(int id_obat);
+    Obat loadObatById(int id_obat);
 }

@@ -51,7 +51,7 @@
         android:padding="16dp"
         android:textColor="@color/hitam"
         android:textSize="14sp"
-        android:validateEmpty="@{true}"
+        app:validateEmpty="@{true}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rellay1" />
@@ -71,7 +71,7 @@
         android:padding="16dp"
         android:textColor="@color/hitam"
         android:textSize="14sp"
-        android:validateEmpty="@{true}"
+        app:validateEmpty="@{true}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_nama" />
@@ -92,7 +92,7 @@
         android:padding="16dp"
         android:textColor="@color/hitam"
         android:textSize="14sp"
-        android:validateEmpty="@{true}"
+        app:validateEmpty="@{true}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_jk" />
