@@ -3,11 +3,13 @@ package com.progmob.medcheck;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.abdeveloper.library.MultiSelectDialog;
 import com.abdeveloper.library.MultiSelectModel;
@@ -19,14 +21,17 @@ import com.progmob.medcheck.databinding.ActivityRekamMedisBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ilhasoft.support.validation.Validator;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class RekamMedisActivity extends AppCompatActivity {
+public class RekamMedisActivity extends AppCompatActivity implements Validator.ValidationListener {
 
     ActivityRekamMedisBinding binding;
     MultiSelectDialog multiSelectDialog;
     final String TAG = "RekamMedis";
     AppDatabase mDb;
+
+    Validator validator;
 
     String pasienId, pasienNama;
     SweetAlertDialog loadingDialog;
@@ -37,6 +42,10 @@ public class RekamMedisActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_rekam_medis);
+
+        validator = new Validator(binding);
+        validator.setValidationListener(this);
+
 
         mDb = AppDatabase.getInstance(getApplicationContext());
 
@@ -94,6 +103,19 @@ public class RekamMedisActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle extras = new Bundle();
+                extras.putString("nama_pasien",pasienNama);
+                extras.putInt("id_pasien",Integer.parseInt(pasienId));
+                extras.putString("keluhan",binding.keluhan.getText().toString());
+                Intent intent = new Intent(RekamMedisActivity.this, DetailRekamMedisActivity.class);
+                intent.putExtras(extras);
+                startActivity(intent);
+            }
+        });
     }
 
     private void pickPasien(){
@@ -135,4 +157,13 @@ public class RekamMedisActivity extends AppCompatActivity {
         );
     }
 
+    @Override
+    public void onValidationSuccess() {
+
+    }
+
+    @Override
+    public void onValidationError() {
+        Toast.makeText(RekamMedisActivity.this, "Mohon Lengkapi Form !", Toast.LENGTH_SHORT).show();
+    }
 }

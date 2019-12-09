@@ -52,11 +52,6 @@ public class PasienFragment extends Fragment {
         });
 
 
-
-
-
-
-
         fab = view.findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +78,14 @@ public class PasienFragment extends Fragment {
                         .setTitleText("Success")
                         .setContentText("Berhasil ditambahkan!")
                         .show();
+                from = "";
+            }
+            if(from.equals("update_success")){
+                new SweetAlertDialog(getActivity(),SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Success")
+                        .setContentText("Berhasil diupdate!")
+                        .show();
+                from = "";
             }
         }
     }
