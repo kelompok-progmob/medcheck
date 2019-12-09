@@ -3,67 +3,105 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="175dp"
     card_view:cardCornerRadius="5dp"
     card_view:cardElevation="3dp"
     card_view:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal"
-        android:padding="3dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_iconpasien"
-            android:layout_width="106dp"
-            android:layout_height="90dp"
-            android:src="@drawable/ic_pasienicon" />
+            android:layout_width="110dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_pasienicon"
+            card_view:layout_constraintBottom_toTopOf="@+id/imageView2"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/tv_nama"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="15dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="I Made Kadek Ketut"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toEndOf="@+id/iv_iconpasien"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_nama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="I Made Kadek Ketut"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_jk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Laki-Laki"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_nama"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_nama" />
 
-            <TextView
-                android:id="@+id/tv_jk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Laki-Laki"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="15 Oktober 2019"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_jk"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_jk" />
 
-            <TextView
-                android:id="@+id/tv_umur"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="50th"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_umur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="50th"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_created"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_created" />
 
-            <TextView
-                android:id="@+id/tv_created"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="15 Oktober 2019"
-                android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:srcCompat="@color/colorPrimary" />
 
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/imageView8"
+            card_view:layout_constraintTop_toTopOf="@+id/imageView2"
+            card_view:srcCompat="@drawable/ic_edit_white" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="@+id/imageView2"
+            card_view:layout_constraintTop_toTopOf="@+id/imageView2"
+            card_view:srcCompat="@drawable/ic_delete_white" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
 

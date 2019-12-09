@@ -209,7 +209,7 @@
                     android:id="@+id/textView20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
+                    android:layout_marginLeft="0dp"
                     android:text="Sudah Punya Akun?"
                     android:textColor="@color/primaryTextColor"/>
 
@@ -219,7 +219,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="Klik Untuk Login"
-                    android:layout_marginLeft="8sp"
+                    android:layout_marginLeft="5sp"
                     android:textStyle="bold"
                     android:textColor="@color/primaryTextColor"/>
 
