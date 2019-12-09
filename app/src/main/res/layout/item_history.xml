@@ -75,17 +75,19 @@
                 android:id="@+id/tv_history_keluhan"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#EEE"
+                android:background="@color/abu"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="isi keluhan pasien" />
+                android:text="isi keluhan pasien"
+                android:padding="10dp"/>
 
             <Button
                 android:id="@+id/history_detail_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/biru_tua"
-                android:text="Detail" />
+                android:text="Detail"
+                android:textColor="@color/putih"/>
 
 
         </LinearLayout>

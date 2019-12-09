@@ -6,31 +6,27 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.ImageFormat;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.progmob.medcheck.Model.Dokter;
 import com.progmob.medcheck.Model.Obat;
 import com.progmob.medcheck.database.AppDatabase;
 import com.progmob.medcheck.database.AppExecutors;
+import com.progmob.medcheck.databinding.ActivityMain35Binding;
 import com.progmob.medcheck.databinding.ActivityMainBinding;
 import com.progmob.medcheck.utils.Constants;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    ActivityMain35Binding binding;
     AppDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main35);
         mDb = AppDatabase.getInstance(getApplicationContext());
 
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
