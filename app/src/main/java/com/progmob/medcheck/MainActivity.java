@@ -10,19 +10,52 @@ import android.graphics.ImageFormat;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.progmob.medcheck.Model.Dokter;
+import com.progmob.medcheck.Model.Obat;
+import com.progmob.medcheck.database.AppDatabase;
+import com.progmob.medcheck.database.AppExecutors;
 import com.progmob.medcheck.databinding.ActivityMainBinding;
 import com.progmob.medcheck.utils.Constants;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    AppDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mDb = AppDatabase.getInstance(getApplicationContext());
+
+
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                final Obat data = new Obat(
+                        "Paracetamol",
+                        10
+                );
+                mDb.obatDao().insertObat(data);
+
+                final Obat data1 = new Obat(
+                        "Ibuprofen",
+                        20
+                );
+                mDb.obatDao().insertObat(data);
+
+                final Obat data3 = new Obat(
+                        "Methylprednisolone",
+                        10
+                );
+                mDb.obatDao().insertObat(data3);
+            }
+        });
 
         setComponents();
 
