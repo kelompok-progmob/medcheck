@@ -14,15 +14,15 @@ public class Obat {
     @ColumnInfo(name="nama")
     public String namaObat;
     @ColumnInfo(name="stok")
-    public String stok;
+    public int stok;
 
     @Ignore
-    public Obat(String namaObat, String stok) {
+    public Obat(String namaObat, int stok) {
         this.namaObat = namaObat;
         this.stok = stok;
     }
 
-    public Obat(int obatId, String namaObat, String stok) {
+    public Obat(int obatId, String namaObat, int stok) {
         this.obatId = obatId;
         this.namaObat = namaObat;
         this.stok = stok;
@@ -44,11 +44,11 @@ public class Obat {
         this.namaObat = namaObat;
     }
 
-    public String getStok() {
+    public int getStok() {
         return stok;
     }
 
-    public void setStok(String stok) {
+    public void setStok(int stok) {
         this.stok = stok;
     }
 }
