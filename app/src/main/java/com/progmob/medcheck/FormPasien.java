@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.progmob.medcheck.Model.Pasien;
 import com.progmob.medcheck.database.AppDatabase;
+import com.progmob.medcheck.database.AppExecutors;
 
 public class FormPasien extends AppCompatActivity {
     private AppDatabase mDb;
@@ -49,11 +50,25 @@ public class FormPasien extends AppCompatActivity {
     }
 
     private void onSubmit(){
-        final Pasien data = new Pasien(
-                etNama.getText().toString(),etJk.getText().toString(),etLahir.getText().toString(),etLahir.getText().toString()
-        );
+        AppExecutors.getInstance().diskIO().execute(new Runnable(){
+            @Override
+            public void run() {
+                final Pasien data = new Pasien(
+                        etNama.getText().toString(),etJk.getText().toString(),etLahir.getText().toString(),etLahir.getText().toString()
+                );
 
-        mDb.pasienDao().insertPasien(data);
+                mDb.pasienDao().insertPasien(data);
+
+                //Intent ke PasienActivity
+                Bundle extras = new Bundle();
+                extras.putString("from","registation_success");
+                Intent intent = new Intent(FormPasien.this, PasienActivity.class);
+                intent.putExtras(extras);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
 

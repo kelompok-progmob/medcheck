@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.progmob.medcheck.Model.Pasien;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PasienAdapter extends RecyclerView.Adapter<PasienAdapter.PasienViewHolder> {
 
-    private ArrayList<Pasien> dataList;
+    private List<Pasien> dataList;
 
-    public PasienAdapter(ArrayList<Pasien> dataList){
+    public PasienAdapter(List<Pasien> dataList){
         this.dataList = dataList;
     }
 
