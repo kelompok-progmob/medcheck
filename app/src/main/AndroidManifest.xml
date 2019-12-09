@@ -17,9 +17,7 @@
         <activity android:name=".EditPasien" android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".DetailRekamMedisActivity"></activity>
         <activity android:name=".RekamMedisActivity" />
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>

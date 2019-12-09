@@ -107,13 +107,7 @@ public class RekamMedisActivity extends AppCompatActivity implements Validator.V
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle extras = new Bundle();
-                extras.putString("nama_pasien",pasienNama);
-                extras.putInt("id_pasien",Integer.parseInt(pasienId));
-                extras.putString("keluhan",binding.keluhan.getText().toString());
-                Intent intent = new Intent(RekamMedisActivity.this, DetailRekamMedisActivity.class);
-                intent.putExtras(extras);
-                startActivity(intent);
+                validator.toValidate();
             }
         });
     }
@@ -159,7 +153,13 @@ public class RekamMedisActivity extends AppCompatActivity implements Validator.V
 
     @Override
     public void onValidationSuccess() {
-
+        Bundle extras = new Bundle();
+        extras.putString("nama_pasien",pasienNama);
+        extras.putInt("id_pasien",Integer.parseInt(pasienId));
+        extras.putString("keluhan",binding.keluhan.getText().toString());
+        Intent intent = new Intent(RekamMedisActivity.this, DetailRekamMedisActivity.class);
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 
     @Override

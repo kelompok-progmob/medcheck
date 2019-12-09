@@ -19,10 +19,16 @@ public interface RekamMedisDao {
     @Query("SELECT * FROM tb_rekam_medis ORDER BY id_rekam_medis")
     List<RekamMedisWithRelation> loadAllRekam();
 
+    @Transaction
+    @Query("SELECT max(id_rekam_medis) FROM tb_rekam_medis ORDER BY id_rekam_medis")
+    int lastRekamMedisId();
+
     @Insert
     void insertRekam(RekamMedis rekamMedis);
 
     @Transaction
     @Query("SELECT * FROM tb_rekam_medis WHERE id_rekam_medis = :id_rekam_medis")
     RekamMedisWithRelation loadRekamMedisById(int id_rekam_medis);
+
+
 }

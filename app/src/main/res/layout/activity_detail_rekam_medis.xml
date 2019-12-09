@@ -116,6 +116,7 @@
                             style="@style/parent"
                             android:layout_marginTop="@dimen/signup_text_margin_top">
                             <EditText
+                                android:id="@+id/berat_badan"
                                 app:validateEmpty="@{true}"
                                 style="@style/modifiedEditText"
                                 android:inputType="number"
@@ -128,6 +129,7 @@
                             style="@style/parent"
                             android:layout_marginTop="@dimen/signup_text_margin_top">
                             <EditText
+                                android:id="@+id/tinggi_badan"
                                 app:validateEmpty="@{true}"
                                 style="@style/modifiedEditText"
                                 android:inputType="number"
@@ -173,27 +175,11 @@
                             <Button
                                 android:id="@+id/btn_simpan"
                                 style="@style/loginButton"
-                                android:layout_width="120dp"
+                                android:layout_width="match_parent"
                                 android:layout_gravity="center"
                                 android:layout_marginRight="16dp"
                                 android:text="Simpan" />
-
-                            <Button
-                                android:id="@+id/btn_input_resep"
-                                style="@style/loginButton"
-                                android:layout_width="120dp"
-                                android:layout_gravity="center"
-                                android:text="Input Resep" />
                         </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/status_resep"
-                            style="@style/parent"
-                            tools:textAlignment="center"
-                            tools:textStyle="bold"
-                            tools:textColor="@color/primaryTextColor"
-                            android:text="Data Resep Belum Dimasukkan"
-                            android:layout_marginTop="4dp"/>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

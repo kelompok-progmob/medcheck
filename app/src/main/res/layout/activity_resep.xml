@@ -64,18 +64,33 @@
 
                         <TextView
                             style="@style/headerTextPrimary"
-                            android:layout_marginTop="@dimen/loginViewsMargin"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="14dp"
                             android:text="Resep"
                             android:textSize="20sp" />
 
-                        <Button
-                            android:id="@+id/btn_tambah"
-                            style="@style/loginButton"
-                            android:layout_width="150dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="8dp"
-                            android:text="+ Tambah Obat" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <Button
+                                android:id="@+id/btn_reset"
+                                style="@style/loginButton"
+                                android:layout_marginRight="8dp"
+                                android:layout_width="130dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:text="Reset" />
+
+                            <Button
+                                android:id="@+id/btn_tambah"
+                                style="@style/loginButton"
+                                android:layout_width="130dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:text="+ Tambah Obat" />
+                        </LinearLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recycler_view"
@@ -85,15 +100,6 @@
                             tools:listitem="@layout/item_obat_resep"
                             ></androidx.recyclerview.widget.RecyclerView>
 
-                        <Button
-                            android:id="@+id/btn_simpan"
-                            style="@style/loginButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="8dp"
-                            android:text="Simpan Resep" />
-
 
                         <LinearLayout
                             android:layout_marginTop="16dp"
@@ -101,7 +107,23 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="horizontal">
+                            <Button
+                                android:id="@+id/btn_tanpa"
+                                android:background="@color/main_orange_color"
+                                android:textColor="@color/whiteTextColor"
+                                android:layout_width="130dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="8dp"
+                                android:text="Tanpa Resep" />
 
+                            <Button
+                                android:id="@+id/btn_simpan"
+                                style="@style/loginButton"
+                                android:layout_width="130dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:text="Simpan Resep" />
                         </LinearLayout>
 
                     </LinearLayout>
