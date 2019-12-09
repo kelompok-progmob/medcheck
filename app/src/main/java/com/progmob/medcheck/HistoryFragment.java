@@ -27,25 +27,54 @@ public class HistoryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_history, container, false);
-
         addData();
-        recyclerView = view.findViewById(R.id.fragment_history_recyclerview);
-        adapter = new HistoryAdapter(historyArrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
+        RecyclerView recyclerView= (RecyclerView) inflater.inflate(R.layout.fragment_history, container, false);
+        ContentAdapter adapter = new ContentAdapter();
         recyclerView.setAdapter(adapter);
 
-//        button= view.findViewById(R.id.history_detail_button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), DetailHistory.class);
-//                startActivity(intent);
-//            }
-//        });
-        return view;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        return recyclerView;
     }
+
+    public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHolder> {
+        private static final int LENGTH = 50;
+
+        public ContentAdapter() {
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+            public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
+                super(inflater.inflate(R.layout.fragment_history, parent, false));
+            }
+
+            @Override
+            public void onClick(View v) {
+                v.getContext().startActivity(new Intent(v.getContext(), DetailHistory.class));
+
+            }
+        }
+
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+            ViewHolder viewHolder = new ViewHolder (LayoutInflater.from(parent.getContext()), parent);
+            return viewHolder;
+
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+        }
+
+        @Override
+        public int getItemCount() {
+            return LENGTH;
+        }
+    }
+
+
 
     void addData() {
         historyArrayList = new ArrayList<>();
