@@ -9,14 +9,16 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.progmob.medcheck.Dao.DokterDao;
+import com.progmob.medcheck.Dao.ObatDao;
 import com.progmob.medcheck.Dao.PasienDao;
 import com.progmob.medcheck.Dao.RekamMedisDao;
 import com.progmob.medcheck.Model.Dokter;
+import com.progmob.medcheck.Model.Obat;
 import com.progmob.medcheck.Model.Pasien;
 import com.progmob.medcheck.Model.RekamMedis;
 
 
-@Database(entities = {Dokter.class, Pasien.class}, version = 3, exportSchema = false)
+@Database(entities = {Dokter.class, Pasien.class, Obat.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String LOG_TAG = AppDatabase.class.getSimpleName();
     private static final Object LOCK = new Object();
@@ -41,5 +43,7 @@ public abstract class AppDatabase extends RoomDatabase {
 //    public abstract RekamMedisDao rekamMedisDao();
     public abstract DokterDao dokterDao();
     public abstract PasienDao pasienDao();
+    public abstract ObatDao obatDao();
 
 }
+

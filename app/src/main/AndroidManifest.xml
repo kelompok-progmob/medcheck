@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
+        <activity android:name=".EditPasien" android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".DetailRekamMedisActivity"></activity>
         <activity android:name=".RekamMedisActivity" />
         <activity android:name=".RegisterActivity" />
@@ -23,13 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FormPasien"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".FormPasien" android:theme="@style/AppTheme"/>
         <activity android:name=".ListObatActivity" />
-        <activity
-            android:name=".PasienActivity"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".PasienActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".HistoryActivity" />
         <activity android:name=".MainActivity" />
     </application>

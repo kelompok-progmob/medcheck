@@ -3,11 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E9E7DD"
-    tools:context=".FormPasien">
+    tools:context=".EditPasien">
 
     <RelativeLayout
         android:id="@+id/rellay1"
@@ -98,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_jk" />
 
     <Button
-        android:id="@+id/btn_simpan"
+        android:id="@+id/btn_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -106,13 +109,30 @@
         android:layout_marginEnd="55dp"
         android:background="@drawable/blue_fill__rounded_color"
         android:fontFamily="@font/nunito_sans_bold"
-        android:text="Simpan"
+        android:text="Update"
         android:textColor="@color/cardview_light_background"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_lahir" />
 
+    <Button
+        android:id="@+id/btn_hapus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="55dp"
+        android:background="@drawable/blue_fill__rounded_color"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="Hapus"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_update" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
