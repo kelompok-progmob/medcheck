@@ -1,18 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:orientation="vertical"
+        style="@style/loginParent">
+        <ScrollView
+            style="@style/parent">
+
+            <RelativeLayout
+                style="@style/parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:weightSum="12"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp">
+
+
+                    <androidx.cardview.widget.CardView
+                        style="@style/loginCard"
+                        fancy:cardCornerRadius="@dimen/loginCardRadius"
+                        android:elevation="5dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="@dimen/loginViewsMargin"
+                        android:background="@color/whiteCardColor">
+
+                        <LinearLayout
+                            style="@style/linearParent"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/loginViewsMargin">
+
+                            <TextView
+                                style="@style/headerTextPrimary"
+                                android:text="Data Hasil Pemeriksaan"
+                                tools:textSize="20sp"
+                                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
+                                    android:enabled="false"
+                                    android:id="@+id/diagnosa"
+                                    android:layout_width="match_parent"
+                                    style="@style/modifiedEditText"
+                                    android:textColor="#000000"
+                                    android:inputType="textMultiLine"
+                                    android:minHeight="50dp"
+                                    tools:text="Pasien sakit"
+                                    android:maxLines="3"
+                                    android:hint="Diagnosa"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
+                                    android:enabled="false"
+                                    android:id="@+id/tekanan_darah"
+                                    style="@style/modifiedEditText"
+                                    android:textColor="#000000"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    tools:text="99/99 mmHg"
+                                    android:hint="Tekanan Darah (mmHg)"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
+                                    android:enabled="false"
+                                    android:id="@+id/suhu_badan"
+                                    style="@style/modifiedEditText"
+                                    android:textColor="#000000"
+                                    android:inputType="number"
+                                    android:maxLines="1"
+                                    tools:text="36,5"
+                                    android:hint="Suhu Badan (Celcius)"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
+                                    android:enabled="false"
+                                    style="@style/modifiedEditText"
+                                    android:textColor="#000000"
+                                    android:inputType="number"
+                                    android:maxLines="1"
+                                    tools:text="60"
+                                    android:hint="Berat (kg)"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
+                                    android:enabled="false"
+                                    style="@style/modifiedEditText"
+                                    android:textColor="#000000"
+                                    android:inputType="number"
+                                    android:maxLines="1"
+                                    tools:text="160"
+                                    android:hint="Tinggi (cm)"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
+                                    android:enabled="false"
+                                    android:id="@+id/pasien"
+                                    style="@style/modifiedEditText"
+                                    android:textColor="#000000"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    tools:text="Nama PAsien"
+                                    android:hint="Pasien"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
+                                    android:id="@+id/keluhan"
+                                    android:enabled="false"
+                                    android:layout_width="match_parent"
+                                    style="@style/modifiedEditText"
+                                    android:textColor="#000000"
+                                    android:inputType="textMultiLine"
+                                    android:minHeight="50dp"
+                                    tools:text="Keluhan"
+                                    android:maxLines="3"
+                                    android:hint="Keluhan"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btn_input_resep"
+                                    style="@style/loginButton"
+                                    android:layout_width="120dp"
+                                    android:layout_gravity="center"
+                                    android:text="View Resep" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/status_resep"
+                                style="@style/parent"
+                                android:layout_marginTop="4dp"
+                                android:text="Resep Tidak Tersedia"
+                                tools:textAlignment="center"
+                                tools:textColor="@color/primaryTextColor"
+                                tools:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>
