@@ -14,6 +14,8 @@ public class DetailRekamMedisActivity extends AppCompatActivity {
     String namaPasien, keluhan;
     int idPasien;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
