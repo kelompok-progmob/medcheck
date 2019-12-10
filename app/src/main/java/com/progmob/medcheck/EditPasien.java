@@ -5,12 +5,14 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.progmob.medcheck.Model.Dokter;
+import com.progmob.medcheck.Model.Obat;
 import com.progmob.medcheck.Model.Pasien;
 import com.progmob.medcheck.database.AppDatabase;
 import com.progmob.medcheck.database.AppExecutors;
@@ -41,7 +43,9 @@ public class EditPasien extends AppCompatActivity implements Validator.Validatio
         validator =new Validator(binding);
         validator.setValidationListener(this);
 
-        getData();
+        Bundle extras = getIntent().getExtras();
+        final int idPasien = extras.getInt("idPasien",0);
+        getData(idPasien);
 
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
@@ -50,7 +54,7 @@ public class EditPasien extends AppCompatActivity implements Validator.Validatio
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onSubmit();
+                onSubmit(idPasien);
             }
         });
     }
@@ -62,12 +66,12 @@ public class EditPasien extends AppCompatActivity implements Validator.Validatio
         btnUpdate = findViewById(R.id.btn_update);
     }
 
-    private void onSubmit(){
+    private void onSubmit(final int idPasien){
         AppExecutors.getInstance().diskIO().execute(new Runnable(){
             @Override
             public void run() {
                 final Pasien data = new Pasien(
-                        etNama.getText().toString(),etJk.getText().toString(),etLahir.getText().toString(),etLahir.getText().toString()
+                        idPasien, etNama.getText().toString(),etJk.getText().toString(),etLahir.getText().toString(),etLahir.getText().toString()
                 );
 
                 mDb.pasienDao().updatePasien(data);
@@ -84,15 +88,19 @@ public class EditPasien extends AppCompatActivity implements Validator.Validatio
 
     }
 
-    private void getData(){
+    private void getData(final int idPasien){
         AppExecutors.getInstance().diskIO().execute(new Runnable(){
             @Override
             public void run() {
-                final Pasien pasien = mDb.pasienDao().loadPasienById(2);
-                etNama.setText(pasien.getNamaPasien());
-                etJk.setText(pasien.getGender());
-                etLahir.setText(pasien.getTglLahir());
-
+                final Pasien pasien = mDb.pasienDao().loadPasienById(idPasien);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        etNama.setText(pasien.getNamaPasien());
+                        etJk.setText(pasien.getGender());
+                        etLahir.setText(pasien.getTglLahir());
+                    }
+                });
             }
         });
 

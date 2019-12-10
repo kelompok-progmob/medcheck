@@ -29,29 +29,6 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main35);
         mDb = AppDatabase.getInstance(getApplicationContext());
 
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                final Obat data = new Obat(
-                        "Paracetamol",
-                        10
-                );
-                mDb.obatDao().insertObat(data);
-
-                final Obat data1 = new Obat(
-                        "Ibuprofen",
-                        20
-                );
-                mDb.obatDao().insertObat(data1);
-
-                final Obat data3 = new Obat(
-                        "Methylprednisolone",
-                        10
-                );
-                mDb.obatDao().insertObat(data3);
-            }
-        });
-
         setComponents();
 
     }
