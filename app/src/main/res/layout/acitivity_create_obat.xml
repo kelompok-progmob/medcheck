@@ -111,7 +111,7 @@
                                 style="@style/loginButton"
                                 android:layout_width="300dp"
                                 android:layout_gravity="center"
-                                android:layout_marginRight="16dp"
+                                android:layout_marginRight="0dp"
                                 android:text="Simpan" />
 
                         </LinearLayout>
