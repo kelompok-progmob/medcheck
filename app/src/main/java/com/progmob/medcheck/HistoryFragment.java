@@ -17,11 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.progmob.medcheck.Model.History;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryFragment extends Fragment {
     private RecyclerView recyclerView;
     private HistoryAdapter adapter;
-    private ArrayList<History> historyArrayList;
+    private List<History> historyArrayList;
     Button button;
 
     @Nullable
