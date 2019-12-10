@@ -15,53 +15,53 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.progmob.medcheck.Model.Obat;
 import com.progmob.medcheck.Model.Pasien;
 import com.progmob.medcheck.database.AppDatabase;
 import com.progmob.medcheck.database.AppExecutors;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PasienAdapter extends RecyclerView.Adapter<PasienAdapter.PasienViewHolder> {
+public class ObatAdapter extends RecyclerView.Adapter<ObatAdapter.ObatViewHolder> {
 
-    private List<Pasien> dataList;
+    private List<Obat> dataList;
     private Context context;
     AppDatabase mDb;
 
-    public PasienAdapter(List<Pasien> dataList){
+    public ObatAdapter(List<Obat> dataList){
         this.dataList = dataList;
     }
 
+    @NonNull
     @Override
-    public PasienViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ObatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         context = parent.getContext();
-        View view = layoutInflater.inflate(R.layout.item_list_pasien, parent, false);
-        return new PasienViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.item_obat, parent, false);
+        return new ObatAdapter.ObatViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(PasienViewHolder holder, final int position) {
+    public void onBindViewHolder(ObatViewHolder holder, final int position) {
         mDb = AppDatabase.getInstance(context);
-        holder.tvNama.setText(dataList.get(position).getNamaPasien());
-        holder.tvJk.setText(dataList.get(position).getGender());
-        holder.tvUmur.setText(dataList.get(position).getTglLahir());
-        holder.tvCreated.setText(dataList.get(position).getCreatedAt());
+        holder.tvNama.setText(dataList.get(position).getNamaObat());
+        holder.tvStok.setText(String.valueOf(dataList.get(position).getStok()));
         holder.btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppExecutors.getInstance().diskIO().execute(new Runnable(){
                     @Override
                     public void run() {
-                        mDb.pasienDao().deletePasien(dataList.get(position));
+                        mDb.obatDao().deleteObat(dataList.get(position));
                         dataList.remove(position);
-                        ((PasienActivity)context).runOnUiThread(new Runnable() {
+                        ((ListObatActivity)context).runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 Toast.makeText( context, "Data Berhasil dihapus!", Toast.LENGTH_SHORT).show();
                                 notifyDataSetChanged();
                             }
                         });
+
                     }
                 });
 
@@ -72,8 +72,9 @@ public class PasienAdapter extends RecyclerView.Adapter<PasienAdapter.PasienView
             @Override
             public void onClick(View view) {
                 Bundle extras = new Bundle();
-                extras.putInt("idPasien",dataList.get(position).getPasienId());
-                Intent intent = new Intent(context, EditPasien.class);
+                Log.d("IDOBAT","ini id obat : "+dataList.get(position).getObatId());
+                extras.putInt("id",dataList.get(position).getObatId());
+                Intent intent = new Intent(context, EditObat.class);
                 intent.putExtras(extras);
                 context.startActivity(intent);
                 ((Activity)context).finish();
@@ -86,19 +87,16 @@ public class PasienAdapter extends RecyclerView.Adapter<PasienAdapter.PasienView
         return (dataList != null) ? dataList.size() : 0;
     }
 
-
-    public class PasienViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvNama, tvJk, tvUmur, tvCreated;
+    public class ObatViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvNama, tvStok;
         private ImageView btnEdit, btnHapus;
 
-        public PasienViewHolder(View itemView) {
+        public ObatViewHolder(View itemView) {
             super(itemView);
-            tvNama = itemView.findViewById(R.id.tv_nama);
-            tvJk = itemView.findViewById(R.id.tv_jk);
-            tvUmur = itemView.findViewById(R.id.tv_umur);
-            tvCreated = itemView.findViewById(R.id.tv_created);
-            btnEdit = itemView.findViewById(R.id.btnUpdatePasien);
-            btnHapus = itemView.findViewById(R.id.btnHapusPasien);
+            tvNama = itemView.findViewById(R.id.nama_obat);
+            tvStok = itemView.findViewById(R.id.stok_obat);
+            btnEdit = itemView.findViewById(R.id.btnEditObat);
+            btnHapus = itemView.findViewById(R.id.btnHapusObat);
         }
     }
 }
