@@ -95,6 +95,7 @@ public class DetailRekamMedisActivity extends AppCompatActivity implements Valid
                         extras.putInt("tinggi_badan",Integer.parseInt(binding.tinggiBadan.getText().toString()));
                         extras.putString("diagnosa_penyakit",binding.diagnosa.getText().toString());
                         Intent intent = new Intent(DetailRekamMedisActivity.this, ResepActivity.class);
+                        intent.putExtras(extras);
                         startActivity(intent);
                     }
                 });

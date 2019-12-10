@@ -16,23 +16,17 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.SP_NAME, 0);
+        if(pref.getInt("dokter_id",0) != 0){
+            Intent intent = new Intent(SplashScreen.this,MainActivity.class);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(SplashScreen.this,LoginActivity.class);
+            startActivity(intent);
+        }
 
-                SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.SP_NAME, 0);
-                if(pref.contains("id_dokter")){
-                    Intent intent = new Intent(SplashScreen.this,MainActivity.class);
-                    startActivity(intent);
-                }
-                else{
-                    Intent intent = new Intent(SplashScreen.this,LoginActivity.class);
-                    startActivity(intent);
-                }
+        finish();
 
-                finish();
-            }
-        }, 1500L);
     }
 }
