@@ -21,7 +21,7 @@ import com.progmob.medcheck.Model.RekamMedis;
 import com.progmob.medcheck.Model.Resep;
 
 
-@Database(entities = {Dokter.class, Pasien.class, Obat.class, Resep.class, RekamMedis.class}, version = 3, exportSchema = false)
+@Database(entities = {Dokter.class, Pasien.class, Obat.class, Resep.class, RekamMedis.class}, version = 4, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String LOG_TAG = AppDatabase.class.getSimpleName();
     private static final Object LOCK = new Object();
