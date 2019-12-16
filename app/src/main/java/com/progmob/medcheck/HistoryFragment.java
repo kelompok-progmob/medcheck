@@ -37,36 +37,28 @@ public class HistoryFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_history, container, false);
         mDb = AppDatabase.getInstance(getActivity().getApplicationContext());
 
+
         AppExecutors.getInstance().diskIO().execute(new Runnable(){
             @Override
             public void run() {
                 historyArrayList = mDb.rekamMedisDao().loadAllRekam();
-                Log.d("nyobak","isi : "+historyArrayList);
-                recyclerView = view.findViewById(R.id.fragment_history_recyclerview);
-                adapter = new HistoryAdapter(historyArrayList);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setAdapter(adapter);
+                Log.d("nyobak","isi : "+historyArrayList.get(0).rekamMedis.getKeluhan());
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView = view.findViewById(R.id.fragment_history_recyclerview);
+                        adapter = new HistoryAdapter(historyArrayList);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
         });
-        //addData();
-//        recyclerView = view.findViewById(R.id.fragment_history_recyclerview);
-//        adapter = new HistoryAdapter(historyArrayList);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setAdapter(adapter);
+
 
         return view;
     }
 
-
-//    void addData() {
-//        historyArrayList = new ArrayList<>();
-//        historyArrayList.add(new History("Aditya Herlambang", "Sakit kepala mencengkram? susah mikir? perut mulas-mulas? kaki susah berjalan tapi sempat sampai ke klinik? kok bisa?", "25 November 2019"));
-//        historyArrayList.add(new History("Kadek Indrayana", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
-//        historyArrayList.add(new History("Gede Suarnata", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
-//        historyArrayList.add(new History( "Km. Hendra Triarsa", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
-//        historyArrayList.add(new History( "Udah Kabur", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
-//
-//    }
 }

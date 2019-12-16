@@ -49,23 +49,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @Override
     public void onBindViewHolder(HistoryViewHolder holder, final int position) {
         mDb = AppDatabase.getInstance(context);
-//            final History history = dataListHistory.get(position);
-//            String nama = history.getNama();
-//            String keluhan = history.getKeluhan();
-//        holder.tvNama.setText(dataListHistory.get(position).rekamMedis);
+
         holder.tvKeluhan.setText(dataListHistory.get(position).rekamMedis.getKeluhan());
         holder.tvCreated.setText(dataListHistory.get(position).rekamMedis.getTanggalRekam());
+        holder.tvNama.setText(dataListHistory.get(position).pasiens.get(0).getNamaPasien());
         holder.detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle extras = new Bundle();
-                extras.putInt("id_rekam",dataListHistory.get(position).rekamMedis.getRekamId());
+                extras.putInt("id_rekam_medis",dataListHistory.get(position).rekamMedis.getRekamId());
                 Intent intent = new Intent(context, HistoryDetailActivity.class);
+                intent.putExtras(extras);
                 context.startActivity(intent);
-                ((Activity)context).finish();
             }
         });
-            }
+    }
 
     @Override
     public int getItemCount() {

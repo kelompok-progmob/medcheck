@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.progmob.medcheck.Model.RekamMedisWithRelation;
+import com.progmob.medcheck.Model.Resep;
+import com.progmob.medcheck.Model.ResepWithRelations;
 import com.progmob.medcheck.database.AppDatabase;
 import com.progmob.medcheck.database.AppExecutors;
 import com.progmob.medcheck.databinding.ActivityDetailHistoryBinding;
@@ -20,6 +22,8 @@ import com.progmob.medcheck.databinding.ActivityDetailHistoryBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 public class HistoryDetailActivity extends AppCompatActivity {
 
@@ -39,7 +43,7 @@ public class HistoryDetailActivity extends AppCompatActivity {
         initComponents();
         Log.d(TAG, "onCreate: started");
         Bundle extras = getIntent().getExtras();
-        final int idRekam = extras.getInt("id_rekam", 1);
+        final int idRekam = extras.getInt("id_rekam_medis", 1);
         getData(idRekam);
 
     }
@@ -49,16 +53,11 @@ public class HistoryDetailActivity extends AppCompatActivity {
         tekanan_darah = findViewById(R.id.tekanan_darah);
         suhu_badan = findViewById(R.id.suhu_badan);
         berat = findViewById(R.id.berat);
-        tinggi = findViewById(R.id.keluhan);
+        tinggi = findViewById(R.id.tinggi);
         pasien = findViewById(R.id.pasien);
 
         btnResep = (Button) findViewById(R.id.btn_view_resep);
-        btnResep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, ViewResepHistory.class));
-            }
-        });
+
     }
 
     private void getData(final int idRekam){
@@ -66,16 +65,39 @@ public class HistoryDetailActivity extends AppCompatActivity {
             @Override
             public void run() {
                 final RekamMedisWithRelation rekamMedisWithRelation = mDb.rekamMedisDao().loadRekamMedisById(idRekam);
+                final List<ResepWithRelations> resepList = mDb.resepDao().getResepByIdRekamMedis(idRekam);
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         keluhan.setText(rekamMedisWithRelation.rekamMedis.getKeluhan());
                         diagnosa.setText(rekamMedisWithRelation.rekamMedis.getDiagnosaPenyakit());
                         tekanan_darah.setText(rekamMedisWithRelation.rekamMedis.getTekananDarah());
-                        suhu_badan.setText(rekamMedisWithRelation.rekamMedis.getSuhuBadan());
-                        berat.setText(rekamMedisWithRelation.rekamMedis.getBeratBadan());
-                        tinggi.setText(rekamMedisWithRelation.rekamMedis.getTinggiBadan());
-                        pasien.setText("nama_pasien");
+                        suhu_badan.setText(String.valueOf(rekamMedisWithRelation.rekamMedis.getSuhuBadan()));
+                        berat.setText(String.valueOf(rekamMedisWithRelation.rekamMedis.getBeratBadan()));
+                        tinggi.setText(String.valueOf(rekamMedisWithRelation.rekamMedis.getTinggiBadan()));
+                        pasien.setText(rekamMedisWithRelation.pasiens.get(0).getNamaPasien());
+
+                        if(resepList.size() < 1){
+                            binding.statusResep.setVisibility(View.VISIBLE);
+                            binding.btnViewResep.setVisibility(View.GONE);
+                        }
+                        else{
+                            binding.statusResep.setVisibility(View.GONE);
+                            binding.btnViewResep.setVisibility(View.VISIBLE);
+                        }
+
+                        btnResep.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(HistoryDetailActivity.this, ViewResepHistory.class);
+                                Bundle extras = new Bundle();
+                                extras.putInt("id_rekam_medis",rekamMedisWithRelation.rekamMedis.getRekamId());
+                                intent.putExtras(extras);
+                                startActivity(intent);
+                            }
+                        });
+
                     }
                 });
             }

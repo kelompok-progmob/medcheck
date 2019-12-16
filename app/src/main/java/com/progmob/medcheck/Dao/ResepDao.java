@@ -24,6 +24,10 @@ public interface ResepDao {
     void insertResep(Resep resep);
 
     @Transaction
+    @Query("SELECT * FROM tb_resep WHERE id_rekam_medis = :id_rekam_medis")
+    List<ResepWithRelations> getResepByIdRekamMedis(int id_rekam_medis);
+
+    @Transaction
     @Query("SELECT * FROM tb_resep WHERE id_resep = :id_resep")
     ResepWithRelations loadResepById(int id_resep);
 }
