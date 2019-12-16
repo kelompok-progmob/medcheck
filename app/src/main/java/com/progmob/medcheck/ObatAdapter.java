@@ -22,6 +22,8 @@ import com.progmob.medcheck.database.AppExecutors;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class ObatAdapter extends RecyclerView.Adapter<ObatAdapter.ObatViewHolder> {
 
     private List<Obat> dataList;
@@ -49,21 +51,44 @@ public class ObatAdapter extends RecyclerView.Adapter<ObatAdapter.ObatViewHolder
         holder.btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppExecutors.getInstance().diskIO().execute(new Runnable(){
-                    @Override
-                    public void run() {
-                        mDb.obatDao().deleteObat(dataList.get(position));
-                        dataList.remove(position);
-                        ((ListObatActivity)context).runOnUiThread(new Runnable() {
+                new SweetAlertDialog(context,SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("Data akan hilang selamanya!")
+                        .setConfirmText("Yes")
+                        .setCancelText("No")
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
-                            public void run() {
-                                Toast.makeText( context, "Data Berhasil dihapus!", Toast.LENGTH_SHORT).show();
-                                notifyDataSetChanged();
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.cancel();
                             }
-                        });
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                AppExecutors.getInstance().diskIO().execute(new Runnable(){
+                                    @Override
+                                    public void run() {
+                                        mDb.obatDao().deleteObat(dataList.get(position));
+                                        dataList.remove(position);
+                                        ((ListObatActivity)context).runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                notifyDataSetChanged();
+                                            }
+                                        });
 
-                    }
-                });
+                                    }
+                                });
+                                sweetAlertDialog
+                                        .setTitleText("Deleted")
+                                        .setContentText("Data berhasil dihapus!")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
+                        .show();
 
             }
         });

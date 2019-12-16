@@ -80,7 +80,7 @@ public class EditPasien extends AppCompatActivity implements Validator.Validatio
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                etLahir.setText(day + "/" + (month + 1) + "/" + year);
+                                etLahir.setText(day + "-" + (month + 1) + "-" + year);
                             }
                         }, year, month, dayOfMonth);
 //                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());

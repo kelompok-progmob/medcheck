@@ -22,7 +22,10 @@ import com.progmob.medcheck.database.AppExecutors;
 import com.progmob.medcheck.databinding.ActivityRegisterBinding;
 import com.progmob.medcheck.databinding.FormPasienBinding;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import br.com.ilhasoft.support.validation.Validator;
 
@@ -74,7 +77,7 @@ public class FormPasien extends AppCompatActivity implements Validator.Validatio
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                etLahir.setText(day + "/" + (month + 1) + "/" + year);
+                                etLahir.setText(day + "-" + (month + 1) + "-" + year);
                             }
                         }, year, month, dayOfMonth);
 //                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
@@ -131,8 +134,11 @@ public class FormPasien extends AppCompatActivity implements Validator.Validatio
         AppExecutors.getInstance().diskIO().execute(new Runnable(){
             @Override
             public void run() {
+                Date datenow = Calendar.getInstance().getTime();
+                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                String strDate = dateFormat.format(datenow);
                 final Pasien data = new Pasien(
-                        etNama.getText().toString(),etJk.getText().toString(),etLahir.getText().toString(),etLahir.getText().toString()
+                        etNama.getText().toString(),etJk.getText().toString(),etLahir.getText().toString(),strDate
                 );
 
                 mDb.pasienDao().insertPasien(data);

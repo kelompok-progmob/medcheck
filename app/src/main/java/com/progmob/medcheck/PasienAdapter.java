@@ -19,8 +19,13 @@ import com.progmob.medcheck.Model.Pasien;
 import com.progmob.medcheck.database.AppDatabase;
 import com.progmob.medcheck.database.AppExecutors;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class PasienAdapter extends RecyclerView.Adapter<PasienAdapter.PasienViewHolder> {
 
@@ -45,25 +50,65 @@ public class PasienAdapter extends RecyclerView.Adapter<PasienAdapter.PasienView
         mDb = AppDatabase.getInstance(context);
         holder.tvNama.setText(dataList.get(position).getNamaPasien());
         holder.tvJk.setText(dataList.get(position).getGender());
-        holder.tvUmur.setText(dataList.get(position).getTglLahir());
-        holder.tvCreated.setText(dataList.get(position).getCreatedAt());
+        String tgllahir = dataList.get(position).getTglLahir();
+        Calendar today = Calendar.getInstance();
+        Calendar lahir = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        try{
+            Date date = format.parse(tgllahir);
+            lahir.setTime(date);
+            int umur = today.get(Calendar.YEAR) - lahir.get(Calendar.YEAR);
+            if (today.get(Calendar.DAY_OF_YEAR) < lahir.get(Calendar.DAY_OF_YEAR)){
+                umur--;
+            }
+            Integer umurInt = new Integer(umur);
+            holder.tvUmur.setText(umurInt.toString()+" tahun");
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        holder.tvCreated.setText("Create at "+dataList.get(position).getCreatedAt());
         holder.btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppExecutors.getInstance().diskIO().execute(new Runnable(){
-                    @Override
-                    public void run() {
-                        mDb.pasienDao().deletePasien(dataList.get(position));
-                        dataList.remove(position);
-                        ((PasienActivity)context).runOnUiThread(new Runnable() {
+                new SweetAlertDialog(context,SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("Data akan hilang selamanya!")
+                        .setConfirmText("Yes")
+                        .setCancelText("No")
+//                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
-                            public void run() {
-                                Toast.makeText( context, "Data Berhasil dihapus!", Toast.LENGTH_SHORT).show();
-                                notifyDataSetChanged();
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.cancel();
                             }
-                        });
-                    }
-                });
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                AppExecutors.getInstance().diskIO().execute(new Runnable(){
+                                    @Override
+                                    public void run() {
+                                        mDb.pasienDao().deletePasien(dataList.get(position));
+                                        dataList.remove(position);
+                                        ((PasienActivity)context).runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                notifyDataSetChanged();
+                                            }
+                                        });
+                                    }
+                                });
+                                sweetAlertDialog
+                                        .setTitleText("Deleted")
+                                        .setContentText("Data berhasil dihapus!")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
+                        .show();
+
 
             }
         });
