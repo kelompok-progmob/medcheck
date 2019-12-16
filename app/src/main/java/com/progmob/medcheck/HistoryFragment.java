@@ -2,6 +2,7 @@ package com.progmob.medcheck;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,38 +16,57 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.progmob.medcheck.Model.History;
+import com.progmob.medcheck.Model.RekamMedis;
+import com.progmob.medcheck.Model.RekamMedisWithRelation;
+import com.progmob.medcheck.database.AppDatabase;
+import com.progmob.medcheck.database.AppExecutors;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryFragment extends Fragment {
+    AppDatabase mDb;
     private RecyclerView recyclerView;
     private HistoryAdapter adapter;
-    private List<History> historyArrayList;
+    private List<RekamMedisWithRelation> historyArrayList;
     Button button;
-
+    View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_history, container, false);
+        view = inflater.inflate(R.layout.fragment_history, container, false);
+        mDb = AppDatabase.getInstance(getActivity().getApplicationContext());
 
-        addData();
-        recyclerView = view.findViewById(R.id.fragment_history_recyclerview);
-        adapter = new HistoryAdapter(historyArrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        AppExecutors.getInstance().diskIO().execute(new Runnable(){
+            @Override
+            public void run() {
+                historyArrayList = mDb.rekamMedisDao().loadAllRekam();
+                Log.d("nyobak","isi : "+historyArrayList);
+                recyclerView = view.findViewById(R.id.fragment_history_recyclerview);
+                adapter = new HistoryAdapter(historyArrayList);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
+            }
+        });
+        //addData();
+//        recyclerView = view.findViewById(R.id.fragment_history_recyclerview);
+//        adapter = new HistoryAdapter(historyArrayList);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setAdapter(adapter);
 
         return view;
     }
 
-    void addData() {
-        historyArrayList = new ArrayList<>();
-        historyArrayList.add(new History("Aditya Herlambang", "Sakit kepala mencengkram? susah mikir? perut mulas-mulas? kaki susah berjalan tapi sempat sampai ke klinik? kok bisa?", "25 November 2019"));
-        historyArrayList.add(new History("Kadek Indrayana", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
-        historyArrayList.add(new History("Gede Suarnata", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
-        historyArrayList.add(new History( "Km. Hendra Triarsa", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
-        historyArrayList.add(new History( "Udah Kabur", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
 
-    }
+//    void addData() {
+//        historyArrayList = new ArrayList<>();
+//        historyArrayList.add(new History("Aditya Herlambang", "Sakit kepala mencengkram? susah mikir? perut mulas-mulas? kaki susah berjalan tapi sempat sampai ke klinik? kok bisa?", "25 November 2019"));
+//        historyArrayList.add(new History("Kadek Indrayana", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
+//        historyArrayList.add(new History("Gede Suarnata", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
+//        historyArrayList.add(new History( "Km. Hendra Triarsa", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
+//        historyArrayList.add(new History( "Udah Kabur", "Sakit kepala mencengkram? bibir pecah-pecah? sariawan? ademkan dengan, ADEMSARI", "25 November 2019"));
+//
+//    }
 }

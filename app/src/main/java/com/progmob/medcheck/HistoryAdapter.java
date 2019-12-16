@@ -1,7 +1,10 @@
 package com.progmob.medcheck;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -12,47 +15,56 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
+
 import com.progmob.medcheck.Model.History;
 import com.progmob.medcheck.Model.Pasien;
+import com.progmob.medcheck.Model.RekamMedis;
+import com.progmob.medcheck.Model.RekamMedisWithRelation;
 import com.progmob.medcheck.database.AppDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
-
-    private List<History> dataListHistory;
+    String namaPasien;
+    int idPasien;
+    private List<RekamMedisWithRelation> dataListHistory;
     private Context context;
     AppDatabase mDb;
 
 
-    public HistoryAdapter(List<History> dataList){
-        this.dataListHistory = dataList;
-    }
+    public HistoryAdapter(List<RekamMedisWithRelation> dataList){this.dataListHistory = dataList; }
 
+    @NonNull
     @Override
     public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         context = parent.getContext();
         View view = layoutInflater.inflate(R.layout.item_history, parent, false);
         return new HistoryViewHolder(view);
+
     }
 
     @Override
-    public void onBindViewHolder(HistoryViewHolder holder, int position) {
-            final History history = dataListHistory.get(position);
-            String nama = history.getNama();
-            String keluhan = history.getKeluhan();
-
-            holder.tvNama.setText(nama);
-            holder.tvKeluhan.setText(keluhan);
-            holder.detail.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, HistoryDetailActivity.class);
-                    context.startActivity(intent);
-                }
-            });
+    public void onBindViewHolder(HistoryViewHolder holder, final int position) {
+        mDb = AppDatabase.getInstance(context);
+//            final History history = dataListHistory.get(position);
+//            String nama = history.getNama();
+//            String keluhan = history.getKeluhan();
+//        holder.tvNama.setText(dataListHistory.get(position).rekamMedis);
+        holder.tvKeluhan.setText(dataListHistory.get(position).rekamMedis.getKeluhan());
+        holder.tvCreated.setText(dataListHistory.get(position).rekamMedis.getTanggalRekam());
+        holder.detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle extras = new Bundle();
+                extras.putInt("id_rekam",dataListHistory.get(position).rekamMedis.getRekamId());
+                Intent intent = new Intent(context, HistoryDetailActivity.class);
+                context.startActivity(intent);
+                ((Activity)context).finish();
+            }
+        });
             }
 
     @Override
@@ -78,4 +90,5 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             detail = itemView.findViewById(R.id.history_detail_button);
         }
     }
+
 }
