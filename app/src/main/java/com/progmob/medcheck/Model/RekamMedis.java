@@ -30,11 +30,13 @@ public class RekamMedis {
     public int tinggiBadan;
     @ColumnInfo(name="diagnosa_penyakit")
     public String diagnosaPenyakit;
+    @ColumnInfo(name="tanggal_rekam")
+    public String tanggalRekam;
 
     //lanjutin sendiri ya
 
     @Ignore
-    public RekamMedis(int dokterId, int pasienId, String keluhan, String tekananDarah, int suhuBadan, int beratBadan, int tinggiBadan, String diagnosaPenyakit) {
+    public RekamMedis(int dokterId, int pasienId, String keluhan, String tekananDarah, int suhuBadan, int beratBadan, int tinggiBadan, String diagnosaPenyakit, String tanggalRekam) {
         this.dokterId = dokterId;
         this.pasienId = pasienId;
         this.keluhan = keluhan;
@@ -43,13 +45,14 @@ public class RekamMedis {
         this.beratBadan = beratBadan;
         this.tinggiBadan = tinggiBadan;
         this.diagnosaPenyakit = diagnosaPenyakit;
+        this.tanggalRekam = tanggalRekam;
     }
 
     @Ignore
     public RekamMedis() {
     }
 
-    public RekamMedis(int rekamId, int dokterId, int pasienId, String keluhan, String tekananDarah, int suhuBadan, int beratBadan, int tinggiBadan, String diagnosaPenyakit) {
+    public RekamMedis(int rekamId, int dokterId, int pasienId, String keluhan, String tekananDarah, int suhuBadan, int beratBadan, int tinggiBadan, String diagnosaPenyakit, String tanggalRekam) {
         this.rekamId = rekamId;
         this.dokterId = dokterId;
         this.pasienId = pasienId;
@@ -59,6 +62,7 @@ public class RekamMedis {
         this.beratBadan = beratBadan;
         this.tinggiBadan = tinggiBadan;
         this.diagnosaPenyakit = diagnosaPenyakit;
+        this.tanggalRekam = tanggalRekam;
     }
 
     public int getRekamId() {
@@ -131,5 +135,13 @@ public class RekamMedis {
 
     public void setDiagnosaPenyakit(String diagnosaPenyakit) {
         this.diagnosaPenyakit = diagnosaPenyakit;
+    }
+
+    public String getTanggalRekam() {
+        return tanggalRekam;
+    }
+
+    public void setTanggalRekam(String tanggalRekam) {
+        this.tanggalRekam = tanggalRekam;
     }
 }

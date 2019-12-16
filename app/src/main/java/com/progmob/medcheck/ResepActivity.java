@@ -23,7 +23,10 @@ import com.progmob.medcheck.database.AppExecutors;
 import com.progmob.medcheck.databinding.ActivityResepBinding;
 import com.progmob.medcheck.utils.Constants;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -106,6 +109,10 @@ public class ResepActivity extends AppCompatActivity {
                                 SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(Constants.SP_NAME,0);
                                 int dokterId = sharedPref.getInt("dokter_id",0);
 
+                                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                Date date = new Date();
+                                String tanggalRekam = dateFormat.format(date);
+
                                 final RekamMedis rekamMedis = new RekamMedis();
                                 rekamMedis.setDokterId(dokterId);
                                 rekamMedis.setPasienId(idPasien);
@@ -115,6 +122,8 @@ public class ResepActivity extends AppCompatActivity {
                                 rekamMedis.setBeratBadan(beratBadan);
                                 rekamMedis.setTinggiBadan(tinggiBadan);
                                 rekamMedis.setDiagnosaPenyakit(diagnosa);
+                                rekamMedis.setTanggalRekam(tanggalRekam);
+
 
                                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                                     @Override
@@ -151,6 +160,10 @@ public class ResepActivity extends AppCompatActivity {
                                 SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(Constants.SP_NAME,0);
                                 int dokterId = sharedPref.getInt("dokter_id",0);
 
+                                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                Date date = new Date();
+                                String tanggalRekam = dateFormat.format(date);
+
                                 final RekamMedis rekamMedis = new RekamMedis();
                                 rekamMedis.setDokterId(dokterId);
                                 rekamMedis.setPasienId(idPasien);
@@ -160,6 +173,7 @@ public class ResepActivity extends AppCompatActivity {
                                 rekamMedis.setBeratBadan(beratBadan);
                                 rekamMedis.setTinggiBadan(tinggiBadan);
                                 rekamMedis.setDiagnosaPenyakit(diagnosa);
+                                rekamMedis.setTanggalRekam(tanggalRekam);
 
                                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                                     @Override
