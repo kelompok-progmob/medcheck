@@ -26,6 +26,9 @@ public interface ObatDao {
     @Delete
     void deleteObat(Obat obat);
 
+    @Query("UPDATE tb_obat SET stok = stok - :jumlah WHERE id_obat = :id_obat")
+    void reduceStok(int id_obat, int jumlah);
+
     @Query("SELECT * FROM tb_obat WHERE id_obat = :id_obat")
     Obat loadObatById(int id_obat);
 }

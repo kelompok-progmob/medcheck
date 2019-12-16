@@ -87,6 +87,19 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                int pasienHariIni = mDb.rekamMedisDao().getTotalPasienHariIni();
+                int pasienBulanIni = mDb.rekamMedisDao().getTotalPasienHariIni();
+
+                binding.pasienBulan.setText(String.valueOf(pasienBulanIni));
+                binding.pasienHari.setText(String.valueOf(pasienHariIni));
+
+            }
+        });
+
     }
 
 }

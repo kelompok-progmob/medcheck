@@ -190,6 +190,7 @@ public class ResepActivity extends AppCompatActivity {
                                             resep.setKeterangan(data.resep.getKeterangan());
 
                                             mDb.resepDao().insertResep(resep);
+                                            mDb.obatDao().reduceStok(data.resep.getIdObat(),data.resep.getJumlah());
                                         }
 
                                     }
