@@ -13,26 +13,30 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.progmob.medcheck.Model.History;
+import com.progmob.medcheck.Model.Pasien;
+import com.progmob.medcheck.database.AppDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
 
-private ArrayList<History> dataListHistory;
-private Context context;
+    private List<History> dataListHistory;
+    private Context context;
+    AppDatabase mDb;
 
-    public HistoryAdapter(Context context, ArrayList<History> dataListHistory){
-            this.dataListHistory = dataListHistory;
-            this.context = context;
+
+    public HistoryAdapter(List<History> dataList){
+        this.dataListHistory = dataList;
     }
-
-    public HistoryAdapter(ArrayList<History> historyArrayList) {this.dataListHistory = historyArrayList;}
 
     @Override
     public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history,parent, false);
-            return new HistoryViewHolder(view);
-            }
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        context = parent.getContext();
+        View view = layoutInflater.inflate(R.layout.item_history, parent, false);
+        return new HistoryViewHolder(view);
+    }
 
     @Override
     public void onBindViewHolder(HistoryViewHolder holder, int position) {
