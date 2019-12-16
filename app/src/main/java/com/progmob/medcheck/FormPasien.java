@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,6 +21,8 @@ import com.progmob.medcheck.database.AppDatabase;
 import com.progmob.medcheck.database.AppExecutors;
 import com.progmob.medcheck.databinding.ActivityRegisterBinding;
 import com.progmob.medcheck.databinding.FormPasienBinding;
+
+import java.util.Calendar;
 
 import br.com.ilhasoft.support.validation.Validator;
 
@@ -29,6 +36,12 @@ public class FormPasien extends AppCompatActivity implements Validator.Validatio
     EditText etLahir;
     Button btnSimpan;
     Validator validator;
+    DatePickerDialog datePickerDialog;
+    int year;
+    int month;
+    int dayOfMonth;
+    String jk;
+    Calendar calendar;
 
 
     @Override
@@ -47,6 +60,55 @@ public class FormPasien extends AppCompatActivity implements Validator.Validatio
             @Override
             public void onClick(View view) {
                 onSubmit();
+            }
+        });
+
+        etLahir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                year = calendar.get(Calendar.YEAR);
+                month = calendar.get(Calendar.MONTH);
+                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog = new DatePickerDialog(FormPasien.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                etLahir.setText(day + "/" + (month + 1) + "/" + year);
+                            }
+                        }, year, month, dayOfMonth);
+//                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                datePickerDialog.show();
+            }
+        });
+
+        etJk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // setup the alert builder
+                final AlertDialog.Builder builder = new AlertDialog.Builder(FormPasien.this);
+                builder.setTitle("Pilih Jenis Kelamin");
+                // add a radio button list
+                final String[] jks = {"Laki-laki", "Perempuan"};
+                int checkedItem = 1; // cow
+                builder.setSingleChoiceItems(jks, checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        jk = jks[which];
+                        Log.d("jeniskelamin",""+jk);
+                    }
+                });
+                // add OK and Cancel buttons
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        etJk.setText(jk);
+                    }
+                });
+                builder.setNegativeButton("Cancel", null);
+                // create and show the alert dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
