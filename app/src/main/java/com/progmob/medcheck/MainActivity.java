@@ -49,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView ivPasien = findViewById(R.id.iv_pasien);
         ImageView ivListobat = findViewById(R.id.iv_listobat);
         CardView rekamMedis = findViewById(R.id.rekam_medis);
+        CardView cvPasien = findViewById(R.id.cv_pasien);
+        CardView cvObat = findViewById(R.id.cv_obat);
 
-        ivPasien.setOnClickListener(new View.OnClickListener() {
+        cvPasien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, PasienActivity.class);
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ivListobat.setOnClickListener(new View.OnClickListener() {
+        cvObat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ListObatActivity.class);
