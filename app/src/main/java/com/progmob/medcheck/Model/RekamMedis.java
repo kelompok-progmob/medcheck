@@ -45,6 +45,10 @@ public class RekamMedis {
         this.diagnosaPenyakit = diagnosaPenyakit;
     }
 
+    @Ignore
+    public RekamMedis() {
+    }
+
     public RekamMedis(int rekamId, int dokterId, int pasienId, String keluhan, String tekananDarah, int suhuBadan, int beratBadan, int tinggiBadan, String diagnosaPenyakit) {
         this.rekamId = rekamId;
         this.dokterId = dokterId;

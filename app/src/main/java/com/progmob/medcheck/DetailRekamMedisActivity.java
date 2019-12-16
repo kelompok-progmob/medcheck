@@ -90,6 +90,7 @@ public class DetailRekamMedisActivity extends AppCompatActivity implements Valid
                         extras.putInt("dokter_id",dokterId);
                         extras.putInt("id_pasien",idPasien);
                         extras.putString("keluhan",keluhan);
+                        extras.putString("tekanan_darah",binding.tekananDarah.getText().toString());
                         extras.putInt("suhu_badan",Integer.parseInt(binding.suhuBadan.getText().toString()));
                         extras.putInt("berat_badan",Integer.parseInt(binding.beratBadan.getText().toString()));
                         extras.putInt("tinggi_badan",Integer.parseInt(binding.tinggiBadan.getText().toString()));

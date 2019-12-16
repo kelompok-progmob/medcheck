@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.progmob.medcheck.Model.Resep;
 import com.progmob.medcheck.Model.ResepWithRelations;
 import com.progmob.medcheck.R;
 import com.progmob.medcheck.database.AppDatabase;
@@ -25,8 +26,9 @@ public class ResepAdapter extends RecyclerView.Adapter<ResepAdapter.MyViewHolder
     private Context context;
     private List<ResepWithRelations> mResepList;
 
-    public ResepAdapter(Context context) {
+    public ResepAdapter(Context context, List<ResepWithRelations> mResepList) {
         this.context = context;
+        this.mResepList = mResepList;
     }
 
     @NonNull
@@ -38,7 +40,9 @@ public class ResepAdapter extends RecyclerView.Adapter<ResepAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ResepAdapter.MyViewHolder myViewHolder, int i) {
-//        myViewHolder.mNama.setText(mResepList.get(i).buku.getNamaBuku());
+        myViewHolder.mNama.setText(mResepList.get(i).obats.get(0).getNamaObat());
+        myViewHolder.mJumlah.setText(String.valueOf(mResepList.get(i).resep.getJumlah()));
+        myViewHolder.mKeterangan.setText(mResepList.get(i).resep.getKeterangan());
     }
 
     @Override
@@ -50,23 +54,18 @@ public class ResepAdapter extends RecyclerView.Adapter<ResepAdapter.MyViewHolder
 
     }
 
-    public void setTasks(List<ResepWithRelations> bukuList) {
-        mResepList = bukuList;
-        notifyDataSetChanged();
-    }
-
-    public List<ResepWithRelations> getTasks() {
-        return mResepList;
-    }
-
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView mNama, mKategori, mPenerbit, mHalaman, mIsbn, mBerat;
+        TextView mNama, mJumlah, mKeterangan;
         AppDatabase mDb;
         CardView mCard;
 
         MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             mDb = AppDatabase.getInstance(context);
+
+            mNama = itemView.findViewById(R.id.item_obat_nama);
+            mJumlah = itemView.findViewById(R.id.item_obat_jmlh);
+            mKeterangan = itemView.findViewById(R.id.item_obat_keterangan);
 
         }
     }

@@ -29,6 +29,12 @@ public class Resep {
         this.keterangan = keterangan;
     }
 
+    public Resep() {
+    }
+
+    @Ignore
+
+
     public Resep(int idResep, int idRekamMedis, int idObat, int jumlah, String keterangan) {
         this.idResep = idResep;
         this.idRekamMedis = idRekamMedis;

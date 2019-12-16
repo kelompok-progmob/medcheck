@@ -73,12 +73,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
+                            android:weightSum="100"
                             android:orientation="horizontal">
                             <Button
                                 android:id="@+id/btn_reset"
                                 style="@style/loginButton"
                                 android:layout_marginRight="8dp"
-                                android:layout_width="130dp"
+                                android:layout_width="0dp"
+                                android:layout_weight="50"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:text="Reset" />
@@ -86,7 +88,8 @@
                             <Button
                                 android:id="@+id/btn_tambah"
                                 style="@style/loginButton"
-                                android:layout_width="130dp"
+                                android:layout_width="0dp"
+                                android:layout_weight="50"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:text="+ Tambah Obat" />
@@ -106,23 +109,26 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_weight="100">
                             <Button
                                 android:id="@+id/btn_tanpa"
                                 android:background="@color/main_orange_color"
                                 android:textColor="@color/whiteTextColor"
-                                android:layout_width="130dp"
+                                android:layout_width="0dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginRight="8dp"
+                                android:layout_weight="50"
                                 android:text="Tanpa Resep" />
 
                             <Button
                                 android:id="@+id/btn_simpan"
                                 style="@style/loginButton"
-                                android:layout_width="130dp"
+                                android:layout_width="0dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
+                                android:layout_weight="50"
                                 android:text="Simpan Resep" />
                         </LinearLayout>
 

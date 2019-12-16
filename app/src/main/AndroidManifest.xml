@@ -12,12 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".EditObat" android:theme="@style/AppTheme"></activity>
+        <activity android:name=".PilihObatActivity"></activity>
+        <activity
+            android:name=".EditObat"
+            android:theme="@style/AppTheme" />
         <activity android:name=".ResepActivity" />
         <activity android:name=".DetailRekamMedisActivity" />
         <activity
             android:name=".EditPasien"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".RekamMedisActivity" />
         <activity android:name=".LoginActivity" />

@@ -89,7 +89,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="32dp"
                             android:layout_weight="1"
-                            android:text="1 Botol"
+                            android:text="1 Buah"
                             android:textSize="14sp"
                             android:textColor="#000000"
                             app:layout_constraintEnd_toEndOf="parent"

@@ -17,6 +17,8 @@ import com.progmob.medcheck.databinding.ActivityMain35Binding;
 import com.progmob.medcheck.databinding.ActivityMainBinding;
 import com.progmob.medcheck.utils.Constants;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MainActivity extends AppCompatActivity {
 
     ActivityMain35Binding binding;
@@ -28,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main35);
         mDb = AppDatabase.getInstance(getApplicationContext());
+
+        if(getIntent().getExtras() != null){
+            Bundle extras = getIntent().getExtras();
+            if(extras.getString("resep").equals("success")){
+                new SweetAlertDialog(MainActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Berhasil !")
+                        .setContentText("Berhasil menambahkan resep.")
+                        .show();
+            }
+        }
 
         setComponents();
 
